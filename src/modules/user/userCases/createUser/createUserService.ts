@@ -1,5 +1,4 @@
 import { inject, injectable } from "tsyringe";
-import { UserRepository } from "../../repositories/implementations/UserRepository";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import {hash} from 'bcrypt';
@@ -12,7 +11,7 @@ class CreateUserService{
     private userRepository: IUserRepository,
   ){}
 
-  async execute(data:ICreateUserDto){
+  async execute(data:ICreateUserDto):Promise<void>{
     const {name,email,cpf,birth_day,password} = data;
     const userAlreadyExists = await this.userRepository.findByEmail(email);
     if(userAlreadyExists?.cpf === cpf) throw new AppError('user already exist!', 409)

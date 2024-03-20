@@ -1,5 +1,5 @@
 import { container } from "tsyringe";
-import { CreateUserService } from "./createUserService";
+import { CreateUserService } from "./CreateUserService";
 import { Request, Response } from "express";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 
