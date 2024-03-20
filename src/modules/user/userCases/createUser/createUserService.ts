@@ -13,10 +13,11 @@ class CreateUserService{
   async execute(data:ICreateUserDto){
     const {name,email,cpf,birth_day,password} = data;
     const userAlreadyExists = await this.userRepository.findByEmail(email);
-    
+
     if(userAlreadyExists) return
 
     await this.userRepository.create({name,email,cpf,birth_day,password})
   }
 
 }
+export{CreateUserService}
