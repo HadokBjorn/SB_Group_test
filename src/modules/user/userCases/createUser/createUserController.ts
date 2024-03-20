@@ -5,10 +5,8 @@ import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 
 class CreateUserController {
   async handle(request: Request, response: Response) : Promise<Response>{
-    try {
 
       const { name, email, cpf, password, birth_day }: ICreateUserDto = request.body;
-
       const createUserService = container.resolve(CreateUserService);
 
       await createUserService.execute({
@@ -21,10 +19,7 @@ class CreateUserController {
 
 
       return response.status(201).send();
-    } catch (error) {
 
-      return response.status(500).json({ error: "Internal server error" });
-    }
   }
 }
 

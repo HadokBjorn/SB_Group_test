@@ -3,6 +3,7 @@ import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import { User } from "../../entities/User.entity";
 import { IUserRepository } from "../IUserRepository";
 import { AppDataSource } from "../../../../config/typeorm";
+import { ObjectId } from "mongodb";
 
 class UserRepository implements IUserRepository {
   private repository: Repository<User>
@@ -24,7 +25,7 @@ class UserRepository implements IUserRepository {
   }
 
   async findById(id: string): Promise<User | null | undefined> {
-    const user = await this.repository.findOne({where:{id}})
+    const user = await this.repository.findOne({where:{_id: new ObjectId(id)}})
     return user;
   }
 

@@ -1,3 +1,5 @@
+import 'reflect-metadata'
+import '../../container/index';
 import { AppDataSource } from '../../../config/typeorm';
 import app from './app';
 

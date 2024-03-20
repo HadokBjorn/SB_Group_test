@@ -1,23 +1,24 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from "typeorm"
+import { ObjectId } from "mongodb"
+import { Column, CreateDateColumn, Entity, ObjectIdColumn, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity('users')
 class User{
-  @PrimaryColumn()
-  id!: string
+  @ObjectIdColumn()
+  _id!: ObjectId
 
-  @Column()
+  @Column({type: 'text'})
   name!: string
 
-  @Column()
+  @Column({type: 'text'})
   cpf!: string
 
-  @Column()
+  @Column({type: 'timestamp'})
   birth_day!: Date
 
-  @Column()
+  @Column({type: 'text'})
   email!: string
 
-  @Column()
+  @Column({type: 'text'})
   password!: string
 }
 
