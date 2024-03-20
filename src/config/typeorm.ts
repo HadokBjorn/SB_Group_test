@@ -1,6 +1,6 @@
 import { DataSource } from "typeorm";
 
-export const MongoClient = new DataSource({
+export const AppDataSource = new DataSource({
   type: 'mongodb',
   url: `mongodb://localhost:27017/sb_group_database`,
   database: 'sb_group_database',

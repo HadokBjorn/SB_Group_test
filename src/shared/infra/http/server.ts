@@ -1,11 +1,11 @@
-import { MongoClient } from '../../../config/typeorm';
+import { AppDataSource } from '../../../config/typeorm';
 import app from './app';
 
 
 const PORT = 5000
 
 const initializeDataSources = async () => {
-  await MongoClient.initialize();
+  await AppDataSource.initialize();
 };
 
 initializeDataSources()
