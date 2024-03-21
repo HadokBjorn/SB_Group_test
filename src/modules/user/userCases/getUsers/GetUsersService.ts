@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { User } from "../../entities/User.entity";
-import { ResponseUserDto } from "../../dtos/ResponseUserDto";
+import IFilterSearchDTO from "../../dtos/IFilterSearchDto";
 
 @injectable()
 class GetUsersService {
@@ -10,7 +10,10 @@ class GetUsersService {
     private userRepository: IUserRepository
   ){}
 
-  async execute(): Promise<User[]|null|undefined>{
+  async execute(filter?: IFilterSearchDTO): Promise<User[]|null|undefined>{
+    if(filter){
+      return await this.userRepository.findByFilter(filter);
+    }
     const users = await this.userRepository.findAll();
     return users;
   }

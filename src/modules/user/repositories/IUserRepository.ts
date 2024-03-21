@@ -1,4 +1,5 @@
 import { ICreateUserDto } from "../dtos/ICreateUserDto";
+import IFilterSearchDTO from "../dtos/IFilterSearchDto";
 import { User } from "../entities/User.entity";
 
 interface IUserRepository{
@@ -6,6 +7,7 @@ interface IUserRepository{
   findById(id: string): Promise<User|null|undefined>
   findAll(): Promise<User[]|null|undefined>
   findByEmail(email: string): Promise<User|null|undefined>
+  findByFilter(filter: IFilterSearchDTO):Promise<User[]|null|undefined>
   delete(user: User): Promise<void>
 }
 export {IUserRepository};

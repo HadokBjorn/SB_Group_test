@@ -4,6 +4,7 @@ import { User } from "../../entities/User.entity";
 import { IUserRepository } from "../IUserRepository";
 import { AppDataSource } from "../../../../config/typeorm";
 import { ObjectId } from "mongodb";
+import IFilterSearchDTO from "../../dtos/IFilterSearchDto";
 
 class UserRepository implements IUserRepository {
   private repository: Repository<User>
@@ -36,6 +37,13 @@ class UserRepository implements IUserRepository {
   async findAll(): Promise<User[] | null | undefined> {
     const users = await this.repository.find()
     return users;
+  }
+
+  async findByFilter(filter: IFilterSearchDTO): Promise<User[] | null | undefined> {
+      const user = await this.repository.find({
+        where: filter
+      })
+      return user;
   }
 
   async delete(user: User): Promise<void> {
