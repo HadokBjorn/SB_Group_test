@@ -6,6 +6,6 @@ interface IUserRepository{
   findById(id: string): Promise<User|null|undefined>
   findAll(): Promise<User[]|null|undefined>
   findByEmail(email: string): Promise<User|null|undefined>
-  delete(id: string): Promise<void>
+  delete(user: User): Promise<void>
 }
 export {IUserRepository};

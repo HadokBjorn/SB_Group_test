@@ -38,8 +38,8 @@ class UserRepository implements IUserRepository {
     return users;
   }
 
-  async delete(id: string): Promise<void> {
-    throw new Error("Method not implemented.");
+  async delete(user: User): Promise<void> {
+    this.repository.delete(user)
   }
 
 }
