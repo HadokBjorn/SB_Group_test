@@ -20,6 +20,7 @@
     "@types/mongodb": "^4.0.7",
     "@types/node": "^20.11.30",
     "bcrypt": "^5.1.1",
+    "celebrate": "^15.0.3",
     "cors": "^2.8.5",
     "cpf-cnpj-validator": "^1.0.3",
     "dotenv": "^16.4.5",
