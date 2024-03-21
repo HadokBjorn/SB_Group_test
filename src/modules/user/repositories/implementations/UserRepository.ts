@@ -11,8 +11,7 @@ class UserRepository implements IUserRepository {
     this.repository = AppDataSource.getRepository(User);
   }
 
-
-  async create(data: ICreateUserDto): Promise<void> {
+  async create(data: ICreateUserDto): Promise<User> {
     const{name,cpf,email,birth_day,password} = data;
     const user = this.repository.create({
       name,
@@ -21,7 +20,7 @@ class UserRepository implements IUserRepository {
       birth_day,
       password
     })
-    await this.repository.save(user);
+    return await this.repository.save(user);
   }
 
   async findById(id: string): Promise<User | null | undefined> {
@@ -37,6 +36,10 @@ class UserRepository implements IUserRepository {
   async findAll(): Promise<User[] | null | undefined> {
     const users = await this.repository.find()
     return users;
+  }
+
+  async delete(id: string): Promise<void> {
+    throw new Error("Method not implemented.");
   }
 
 }
