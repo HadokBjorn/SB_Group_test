@@ -1,8 +1,8 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
-import { User } from "../../entities/User.entity";
 import { AppError } from "../../../../shared/infra/http/errors/AppError";
+import { User } from "../../entities/User.entity";
 
 @injectable()
 class UpdateUserService{
