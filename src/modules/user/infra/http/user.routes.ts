@@ -22,7 +22,19 @@ const authenticateControllerUser = new AuthenticateUserController();
 userRoutes
   .post('/auth', authenticateControllerUser.handle)
   .use(ensureAuthenticated)
-  .post('/', createControllerUser.handle)
+
+  .post(
+    '/',
+    celebrate({
+      [Segments.BODY]:{
+        name: Joi.string().min(3).max(50).trim().required(),
+        cpf: Joi.string().min(11).max(11).trim().required(),
+        birth_day: Joi.date().required(),
+        email: Joi.string().email().trim().required(),
+        password: Joi.string().trim().required(),
+      }
+    }),
+    createControllerUser.handle)
   .get(
     '/',
     celebrate({
@@ -33,8 +45,36 @@ userRoutes
       }
     }),
     getControllerUsers.handle)
-  .get('/:id', getControllerUserById.handle)
-  .put('/:id', updateControllerUser.handle)
-  .delete('/:id', deleteControllerUser.handle)
+  .get(
+    '/:id',
+    celebrate({
+      [Segments.PARAMS]:{
+        id: Joi.string().trim().required()
+      }
+    }),
+    getControllerUserById.handle)
+  .put(
+    '/:id',
+    celebrate({
+      [Segments.PARAMS]:{
+        id: Joi.string().trim().required()
+      },
+      [Segments.BODY]:{
+        name: Joi.string().min(3).max(50).trim().required(),
+        cpf: Joi.string().min(11).max(11).trim().required(),
+        birth_day: Joi.date().required(),
+        email: Joi.string().email().trim().required(),
+        password: Joi.string().trim().required(),
+      }
+    }),
+    updateControllerUser.handle)
+  .delete(
+    '/:id',
+    celebrate({
+      [Segments.PARAMS]:{
+        id: Joi.string().trim().required()
+      }
+    }),
+    deleteControllerUser.handle)
 
 export{userRoutes};
