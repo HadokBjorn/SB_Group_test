@@ -1,7 +1,7 @@
 import { ObjectId } from "typeorm"
 import { User } from "../entities/User.entity"
 
-class GetUserDto{
+class ResponseUserDto{
   _id: ObjectId
 
   name: string
@@ -20,4 +20,4 @@ class GetUserDto{
     this.email = user.email
   }
 }
-export {GetUserDto}
+export {ResponseUserDto}

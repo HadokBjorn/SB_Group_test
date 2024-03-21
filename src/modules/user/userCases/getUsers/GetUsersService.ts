@@ -1,7 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { User } from "../../entities/User.entity";
-import { GetUserDto } from "../../dtos/GetUserDto";
+import { ResponseUserDto } from "../../dtos/ResponseUserDto";
 
 @injectable()
 class GetUsersService {

@@ -2,7 +2,7 @@ import { Response, Request } from "express";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import { container } from "tsyringe";
 import { UpdateUserService } from "./UpdateUserService";
-import { GetUserDto } from "../../dtos/GetUserDto";
+import { ResponseUserDto } from "../../dtos/ResponseUserDto";
 class UpdateUserController{
   async handle(request: Request, response: Response): Promise<Response>{
     const {id} = request.params;
@@ -15,7 +15,7 @@ class UpdateUserController{
       birth_day,
       password
     });
-    return response.status(201).send(new GetUserDto(updateUser));
+    return response.status(201).send(new ResponseUserDto(updateUser));
   }
 }
 export { UpdateUserController }
