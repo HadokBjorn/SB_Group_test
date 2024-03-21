@@ -18,7 +18,7 @@ class CreateUserService{
     if(userAlreadyExists) throw new AppError('user already exist!', 409)
     const salt = 8;
     const passwordHash = await hash(password, salt);
-    await this.userRepository.create({name,email,cpf,birth_day,password: passwordHash})
+    await this.userRepository.save({name,email,cpf,birth_day,password: passwordHash})
   }
 
 }
