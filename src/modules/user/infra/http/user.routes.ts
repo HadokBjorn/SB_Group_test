@@ -19,8 +19,8 @@ const authenticateControllerUser = new AuthenticateUserController();
 
 userRoutes
   .post('/auth', authenticateControllerUser.handle)
-  .post('/', createControllerUser.handle)
   .use(ensureAuthenticated)
+  .post('/', createControllerUser.handle)
   .get('/', getControllerUsers.handle)
   .get('/:id', getControllerUserById.handle)
   .put('/:id', updateControllerUser.handle)
