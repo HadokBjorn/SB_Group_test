@@ -15,6 +15,11 @@
                 ],
                 "summary": "Create a user",
                 "description": "Create a new user",
+                "security": [
+                  {
+                    "bearerAuth": []
+                  }
+                ],
                 "requestBody": {
                     "content": {
                         "application/json": {
@@ -66,6 +71,11 @@
                 ],
                 "summary": "List all Users",
                 "description": "List all Users",
+                "security": [
+                  {
+                    "bearerAuth": []
+                  }
+                ],
                 "parameters": [
                   {
                     "name": "name",
@@ -146,6 +156,11 @@
                 ],
                 "summary": "Find a User by id",
                 "description": "Return a User",
+                "security": [
+                  {
+                    "bearerAuth": []
+                  }
+                ],
                 "parameters": [
                   {
                     "name": "id",
@@ -199,6 +214,11 @@
                 ],
                 "summary": "Update a User by id",
                 "description": "Return a User updated",
+                "security": [
+                  {
+                    "bearerAuth": []
+                  }
+                ],
                 "parameters": [
                   {
                     "name": "id",
@@ -253,6 +273,11 @@
                 ],
                 "summary": "Delete a User by id",
                 "description": "Delete a User",
+                "security": [
+                  {
+                    "bearerAuth": []
+                  }
+                ],
                 "parameters": [
                   {
                     "name": "id",
