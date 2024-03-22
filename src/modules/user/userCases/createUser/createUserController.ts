@@ -9,7 +9,7 @@ class CreateUserController {
       const { name, email, cpf, password, birth_day }: ICreateUserDto = request.body;
       const createUserService = container.resolve(CreateUserService);
 
-      await createUserService.execute({
+      const user = await createUserService.execute({
         name,
         email,
         cpf,
@@ -18,7 +18,7 @@ class CreateUserController {
       });
 
 
-      return response.status(201).send();
+      return response.status(201).send(user);
 
   }
 }

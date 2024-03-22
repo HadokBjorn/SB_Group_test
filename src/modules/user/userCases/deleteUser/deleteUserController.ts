@@ -6,7 +6,7 @@ class DeleteUserController{
     const {id} = request.params;
     const deleteUserService = container.resolve(DeleteUserService);
     await deleteUserService.execute(id);
-    return response.status(204).send()
+    return response.status(204).send('User deleted')
   }
 }
 export { DeleteUserController }

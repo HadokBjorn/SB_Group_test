@@ -4,6 +4,7 @@ import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import {hash} from 'bcrypt';
 import { AppError } from "../../../../shared/infra/http/errors/AppError";
 import { cpf as CPF } from "cpf-cnpj-validator";
+import { ResponseUserDto } from "../../dtos/ResponseUserDto";
 
 @injectable()
 class CreateUserService{
@@ -12,7 +13,7 @@ class CreateUserService{
     private userRepository: IUserRepository,
   ){}
 
-  async execute(data:ICreateUserDto):Promise<void>{
+  async execute(data:ICreateUserDto):Promise<ResponseUserDto>{
     const {name,email,cpf,birth_day,password} = data;
     if (!CPF.isValid(cpf)) {
       throw new AppError('CPF invalid', 400);
@@ -22,7 +23,8 @@ class CreateUserService{
     if(userAlreadyExists) throw new AppError('user already exist!', 409)
     const salt = 8;
     const passwordHash = await hash(password, salt);
-    await this.userRepository.save({name,email,cpf,birth_day,password: passwordHash})
+    const user = await this.userRepository.save({name,email,cpf,birth_day,password: passwordHash})
+    return new ResponseUserDto(user);
   }
 
 }
