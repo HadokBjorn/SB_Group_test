@@ -20,6 +20,7 @@ class CreateUserService{
     }
     const userAlreadyExists = await this.userRepository.findByEmail(email);
     if(userAlreadyExists) throw new AppError('user already exist!', 409)
+    //ADD ENV
     const salt = 8;
     const passwordHash = await hash(password, salt);
     const user = await this.userRepository.save({name,email,cpf,birth_day,password: passwordHash})

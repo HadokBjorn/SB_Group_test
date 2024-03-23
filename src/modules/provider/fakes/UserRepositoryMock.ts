@@ -10,8 +10,9 @@ class UserRepositoryMock implements IUserRepository{
   async save(data: ICreateUserDto): Promise<User> {
     const newUser = {
       _id: new ObjectId(),
-      ...data
+      ...data,
     }
+
     this.users.push(newUser)
     return newUser;
   }
