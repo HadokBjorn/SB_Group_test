@@ -19,7 +19,6 @@ class CreateUserService{
       throw new AppError('CPF invalid', 400);
     }
     const userAlreadyExists = await this.userRepository.findByEmail(email);
-    if(userAlreadyExists?.cpf === cpf) throw new AppError('user already exist!', 409)
     if(userAlreadyExists) throw new AppError('user already exist!', 409)
     const salt = 8;
     const passwordHash = await hash(password, salt);
