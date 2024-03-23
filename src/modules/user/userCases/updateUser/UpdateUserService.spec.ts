@@ -62,4 +62,20 @@ describe('UpdateUserService Tests',()=>{
     }).rejects.toBeInstanceOf(AppError)
   });
 
+  it('Should return a updated user',async()=>{
+    await userRepositoryMock.save(user);
+    const userToUpdate:ICreateUserDto = {
+      name: 'my name updated',
+      cpf: '12345678911',
+      birth_day: new Date('2000-08-21'),
+      email: "joaotest1@gmail.com",
+      password: "12345678"
+    }
+    const mockUserUpdated = Object.assign(user, userToUpdate)
+
+    expect(async()=>{
+      await updateUserService.execute(user._id.toString(),userToUpdate);
+    }).rejects.toBeInstanceOf(AppError)
+  });
+
 })

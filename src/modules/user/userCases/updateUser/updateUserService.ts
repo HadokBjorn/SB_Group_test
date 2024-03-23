@@ -2,8 +2,8 @@ import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import { AppError } from "../../../../shared/infra/http/errors/AppError";
-import { User } from "../../entities/User.entity";
 import { ResponseUserDto } from "modules/user/dtos/ResponseUserDto";
+import { cpf as CPF } from "cpf-cnpj-validator";
 
 @injectable()
 class UpdateUserService{
@@ -16,6 +16,10 @@ class UpdateUserService{
       const userExist = await this.userRepository.findById(id);
 
       if(!userExist) throw new AppError('user not found', 404);
+
+      if (!CPF.isValid(data.cpf)) {
+        throw new AppError('CPF invalid', 400);
+      }
 
       const toUpdateUser = Object.assign(userExist, data);
 
