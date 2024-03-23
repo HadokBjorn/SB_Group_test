@@ -15,7 +15,7 @@ class UpdateUserController{
       birth_day,
       password
     });
-    return response.status(201).send(new ResponseUserDto(updateUser));
+    return response.status(201).send(updateUser);
   }
 }
 export { UpdateUserController }
