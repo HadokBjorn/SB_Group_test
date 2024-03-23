@@ -2,7 +2,7 @@
 
 ### Modelo de Projeto:
 
-    SOLID aplicado a uma Arquitetura em camadas.
+    SOLID aplicado a uma Arquitetura em camadas (Clean Architecture).
 
 ### libs Dependencias:
 
