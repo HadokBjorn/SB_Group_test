@@ -20,7 +20,16 @@ const deleteControllerUser = new DeleteUserController();
 const authenticateControllerUser = new AuthenticateUserController();
 
 userRoutes
-  .post('/auth', authenticateControllerUser.handle)
+  .post(
+    '/auth',
+    celebrate({
+      [Segments.BODY]:{
+        email: Joi.string().email().trim().required(),
+        password: Joi.string().min(6).trim().required(),
+      }
+    }),
+    authenticateControllerUser.handle)
+
   .use(ensureAuthenticated)
 
   .post(
@@ -31,7 +40,7 @@ userRoutes
         cpf: Joi.string().min(11).max(11).trim().required(),
         birth_day: Joi.date().required(),
         email: Joi.string().email().trim().required(),
-        password: Joi.string().trim().required(),
+        password: Joi.string().min(6).trim().required(),
       }
     }),
     createControllerUser.handle)
@@ -64,7 +73,7 @@ userRoutes
         cpf: Joi.string().min(11).max(11).trim().required(),
         birth_day: Joi.date().required(),
         email: Joi.string().email().trim().required(),
-        password: Joi.string().trim().required(),
+        password: Joi.string().min(6).trim().required(),
       }
     }),
     updateControllerUser.handle)
