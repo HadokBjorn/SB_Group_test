@@ -51,7 +51,7 @@ describe('AuthenticateUserService Tests',()=>{
       password: "12345678"
     }
 
-    expect(async()=>{
+    await expect(async()=>{
       await authenticateUserService.execute(mockLoginEmailIncorrect)
     }).rejects.toBeInstanceOf(AppError)
   });
@@ -63,7 +63,7 @@ describe('AuthenticateUserService Tests',()=>{
       password: "incorrectPass545"
     }
 
-    expect(async()=>{
+    await expect(async()=>{
       await authenticateUserService.execute(mockLoginPasswordIncorrect)
     }).rejects.toBeInstanceOf(AppError)
   });
