@@ -15,13 +15,22 @@ class UserRepositoryMock implements IUserRepository{
     this.users.push(newUser)
     return newUser;
   }
-  async findById(id: string): Promise<User|undefined|null> {
+  async findById(id: string): Promise<User> {
     return this.users.find(user=>user._id.toString() === id)||null
   }
   async findByEmail(email: string): Promise<User> {
     return this.users.find(user=>user.email === email)||null
   }
-  async findAll(filter?: IFilterSearchDTO): Promise<User[]> {
+  async findAll(filter?: IFilterSearchDTO): Promise<User[]|null|undefined> {
+    if(filter.name){
+      return this.users.filter(user=>user.name===filter.name)
+    }
+    if(filter.cpf){
+      return this.users.filter(user=>user.cpf===filter.cpf)
+    }
+    if(filter.email){
+      return this.users.filter(user=>user.email===filter.email)
+    }
     return this.users;
   }
   async delete(user: User): Promise<void> {
