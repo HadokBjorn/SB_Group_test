@@ -1,303 +1,417 @@
 {
-    "openapi": "3.0.0",
-    "info": {
-        "title": "SB Group Test API Documentation",
-        "version": "1.0.0",
-        "contact": {
-            "email": "esaubandeira.dev@gmail.com"
-        }
-    },
-    "paths": {
-        "/users": {
-            "post": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Create a user",
-                "description": "Create a new user",
-                "security": [
-                  {
-                    "bearerAuth": []
-                  }
-                ],
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "email": {
-                                        "type": "string"
-                                    },
-                                    "password": {
-                                        "type": "string"
-                                    },
-                                    "cpf": {
-                                        "type": "string"
-                                    },
-                                    "birth_day": {
-                                        "type": "date"
-                                    }
-                                },
-                                "example": {
-                                    "_id": "5d4fs5df5sd4f54fd4fddfd",
-                                    "name": "Esaú Backend",
-                                    "email": "esaubandeira.dev@gmail.com",
-                                    "cpf": 56199931084,
-                                    "birth_day": "2000-09-20"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "Created"
-                    },
-                    "500": {
-                        "description": "Cannot create a user"
-                    },
-                    "409": {
-                      "description": "User already exist"
-                  }
-                }
-            },
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "List all Users",
-                "description": "List all Users",
-                "security": [
-                  {
-                    "bearerAuth": []
-                  }
-                ],
-                "parameters": [
-                  {
-                    "name": "name",
-                    "in": "query",
-                    "description": "Name to search Users",
-                    "required": false,
-                    "schema": {
-                      "type": "string"
-                    }
-                  },
-                  {
-                    "name": "cpf",
-                    "in": "query",
-                    "description": "CPF to search a User",
-                    "required": false,
-                    "schema": {
-                      "type": "string"
-                    }
-                  },
-                  {
-                    "name": "email",
-                    "in": "query",
-                    "description": "E-mail to search a User",
-                    "required": false,
-                    "schema": {
-                      "type": "string"
-                    }
-                  }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "email": {
-                                            "type": "string"
-                                        },
-                                        "cpf": {
-                                            "type": "string"
-                                        },
-                                        "birth_day": {
-                                            "type": "date"
-                                        }
-                                    },
-                                    "example": [
-                                        {
-                                            "_id": "d21f2d1dldfldfdfg5df5fg4",
-                                            "name": "Esaú Backend",
-                                            "email": "esaubandeira.dev@gmail.com",
-                                            "cpf": 56199931084,
-                                            "birth_day": "2000-09-20"
-                                        },
-                                        {
-                                            "_id": "d21f2d4f5gfd4g5g5df5fg4",
-                                            "name": "User 2",
-                                            "email": "user2@gmail.com",
-                                            "cpf": 56199931088,
-                                            "birth_day": "2000-05-15"
-                                        }
-                                    ]
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/users/{id}": {
-            "get": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Find a User by id",
-                "description": "Return a User",
-                "security": [
-                  {
-                    "bearerAuth": []
-                  }
-                ],
-                "parameters": [
-                  {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID to search a User",
-                    "required": true,
-                    "schema": {
-                      "type": "string"
-                    }
-                  }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "email": {
-                                            "type": "string"
-                                        },
-                                        "cpf": {
-                                            "type": "string"
-                                        },
-                                        "birth_day": {
-                                            "type": "date"
-                                        }
-                                    },
-                                    "example": {
-                                        "name": "Esaú Backend",
-                                        "email": "esaubandeira.dev@gmail.com",
-                                        "cpf": 56199931084,
-                                        "birth_day": "2000-09-20"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            },
-            "put": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Update a User by id",
-                "description": "Return a User updated",
-                "security": [
-                  {
-                    "bearerAuth": []
-                  }
-                ],
-                "parameters": [
-                  {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID to update a User",
-                    "required": true,
-                    "schema": {
-                      "type": "string"
-                    }
-                  }
-                ],
-                "responses": {
-                    "201": {
-                        "description": "Created",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "object",
-                                    "properties": {
-                                        "name": {
-                                            "type": "string"
-                                        },
-                                        "email": {
-                                            "type": "string"
-                                        },
-                                        "cpf": {
-                                            "type": "string"
-                                        },
-                                        "birth_day": {
-                                            "type": "date"
-                                        }
-                                    },
-                                    "example": {
-                                        "_id": "d21f2d1fs1df5fds4sdf5",
-                                        "name": "Esaú Backend",
-                                        "email": "esaubandeira.dev@gmail.com",
-                                        "cpf": 56199931084,
-                                        "birth_day": "2000-09-20"
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            },
-            "delete": {
-                "tags": [
-                    "User"
-                ],
-                "summary": "Delete a User by id",
-                "description": "Delete a User",
-                "security": [
-                  {
-                    "bearerAuth": []
-                  }
-                ],
-                "parameters": [
-                  {
-                    "name": "id",
-                    "in": "path",
-                    "description": "ID to delete a User",
-                    "required": true,
-                    "schema": {
-                      "type": "string"
-                    }
-                  }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "No Content"
-                    },
-                    "404": {
-                        "description": "User not found"
-                    }
-                }
-            }
-        }
+  "openapi": "3.0.0",
+  "info": {
+    "title": "SB Group Test API Documentation",
+    "version": "1.0.0",
+    "contact": {
+      "email": "esaubandeira.dev@gmail.com"
     }
+  },
+  "paths": {
+    "/users/auth": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Login with a user",
+        "description": "Return a token authorization",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  }
+                },
+                "example": {
+                  "email": "esaubandeira.dev@gmail.com",
+                  "password": "12345678"
+                }
+              }
+            }
+          },
+          "required":true
+        },
+        "responses": {
+          "200": {
+            "description": "Login with success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    }
+                  },
+                  "example": {
+                    "token": "d21f2d1fs1df5fds4sdf5",
+                    "user": {
+                      "name": "Esaú Backend",
+                      "email": "esaubandeira.dev@gmail.com"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "209": {
+            "description": "Email or password invalid"
+          }
+        }
+      }
+    },
+    "/users": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Create a user",
+        "description": "Create a new user",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "birth_day": {
+                    "type": "date"
+                  }
+                },
+                "example": {
+                  "name": "Esaú Backend",
+                  "email": "esaubandeira.dev@gmail.com",
+                  "cpf": "56199931084",
+                  "birth_day": "2000-09-20",
+                  "password":"12345678"
+                }
+              }
+            }
+          },
+          "required":true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content":{
+              "application/json":{
+                "schema":{
+                  "example": {
+                    "_id": "5d4fs5df5sd4f54fd4fddfd",
+                    "name": "Esaú Backend",
+                    "email": "esaubandeira.dev@gmail.com",
+                    "cpf": "56199931084",
+                    "birth_day": "2000-09-20"
+                  }
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "User already exist"
+          },
+          "500": {
+            "description": "Cannot create a user"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "List all Users",
+        "description": "List all Users",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "query",
+            "description": "Name to search Users",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "cpf",
+            "in": "query",
+            "description": "CPF to search a User",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "email",
+            "in": "query",
+            "description": "E-mail to search a User",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "cpf": {
+                      "type": "string"
+                    },
+                    "birth_day": {
+                      "type": "date"
+                    }
+                  },
+                  "example": [
+                    {
+                      "_id": "d21f2d1dldfldfdfg5df5fg4",
+                      "name": "Esaú Backend",
+                      "email": "esaubandeira.dev@gmail.com",
+                      "cpf": 56199931084,
+                      "birth_day": "2000-09-20"
+                    },
+                    {
+                      "_id": "d21f2d4f5gfd4g5g5df5fg4",
+                      "name": "User 2",
+                      "email": "user2@gmail.com",
+                      "cpf": 56199931088,
+                      "birth_day": "2000-05-15"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Find a User by id",
+        "description": "Return a User",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID to search a User",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "cpf": {
+                      "type": "string"
+                    },
+                    "birth_day": {
+                      "type": "date"
+                    }
+                  },
+                  "example": {
+                    "name": "Esaú Backend",
+                    "email": "esaubandeira.dev@gmail.com",
+                    "cpf": "56199931084",
+                    "birth_day": "2000-09-20"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Update a User by id",
+        "description": "Return a User updated",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID to update a User",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "email": {
+                    "type": "string"
+                  },
+                  "password": {
+                    "type": "string"
+                  },
+                  "cpf": {
+                    "type": "string"
+                  },
+                  "birth_day": {
+                    "type": "date"
+                  }
+                },
+                "example": {
+                  "name": "Esaú update",
+                  "email": "esaubandeira.dev@gmail.com",
+                  "cpf": "56199931084",
+                  "birth_day": "2000-09-20",
+                  "password":"12345678"
+                }
+              }
+            }
+          },
+          "required":true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    },
+                    "cpf": {
+                      "type": "string"
+                    },
+                    "birth_day": {
+                      "type": "date"
+                    }
+                  },
+                  "example": {
+                    "_id": "d21f2d1fs1df5fds4sdf5",
+                    "name": "Esaú Backend",
+                    "email": "esaubandeira.dev@gmail.com",
+                    "cpf": "56199931084",
+                    "birth_day": "2000-09-20"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "summary": "Delete a User by id",
+        "description": "Delete a User",
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "ID to delete a User",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content",
+            "content":{
+              "application/json":{
+                "example":"User deleted"
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  }
 }
