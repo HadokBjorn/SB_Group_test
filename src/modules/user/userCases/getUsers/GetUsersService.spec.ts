@@ -1,8 +1,6 @@
 import 'reflect-metadata'
 import { container } from "tsyringe";
 import { UserRepositoryMock } from "modules/provider/fakes/UserRepositoryMock";
-import { ICreateUserDto } from "modules/user/dtos/ICreateUserDto";
-import { AppError } from '../../../../shared/infra/http/errors/AppError';
 import { GetUsersService } from './GetUsersService';
 import IFilterSearchDTO from 'modules/user/dtos/IFilterSearchDto';
 import { ResponseUserDto } from 'modules/user/dtos/ResponseUserDto';
