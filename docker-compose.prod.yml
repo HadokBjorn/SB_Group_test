@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: SB_GROUP_TEST
+    restart: unless-stopped
+    ports:
+      - 5000:5000
+  depends_on:
+    - mongodb
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: "seu_usuario"
+    MONGO_INITDB_ROOT_PASSWORD: "sua_senha"
+  volumes:
+    - mongodb_data:/data/db
+
+volumes:
+  mongodb_data:

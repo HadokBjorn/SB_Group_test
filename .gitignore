@@ -11,5 +11,5 @@ dist
 
 uploads/*
 !uploads/.gitkeep
-dados_mongodb/
+mongodb_data/
 
