@@ -3,7 +3,8 @@
 node_modules/
 build/
 temp/
-.env
+.env*
+!.env.example
 coverage
 ormconfig.json
 dist
