@@ -11,6 +11,14 @@ const initializeDataSources = async () => {
 
 async function createAdminAndUsers() {
   const userRepository = new UserRepository();
+  const usersAlreadyExist = await userRepository.findAll({})
+  if(usersAlreadyExist.length > 0) {
+    console.log('------------------------------------------');
+    console.log('Cannot create users because already exist');
+    console.log('------------------------------------------');
+    return
+  }
+
   const userAdmin:ICreateUserDto = {
     name: "Admin",
     cpf: "44906858074",
