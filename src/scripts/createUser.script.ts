@@ -4,7 +4,7 @@ import { ICreateUserDto } from "../modules/user/dtos/ICreateUserDto";
 import { hashSync } from "bcrypt";
 import { AppDataSource } from '../config/typeorm';
 import { loadEnv } from '../config/env.config';
-
+loadEnv()
 const initializeDataSources = async () => {
   await AppDataSource.initialize();
 };
@@ -24,7 +24,7 @@ async function createAdminAndUsers() {
     cpf: "44906858074",
     birth_day: new Date(),
     email: "admin@gmail.com",
-    password: hashSync("12345678",8)
+    password: hashSync("12345678",+process.env.SALT)
   }
 
   console.log('Creating a Admin user...');
@@ -37,7 +37,7 @@ async function createAdminAndUsers() {
       cpf: `4490685807${i}`,
       birth_day: new Date(`2000-01-${i < 10 ? '0' + i : i}`),
       email: `test_user${i}@gmail.com`,
-      password: hashSync("12345678",8)
+      password: hashSync("12345678",+process.env.SALT)
     }
     console.log('creating users...');
     const createUser = await userRepository.save(user)
