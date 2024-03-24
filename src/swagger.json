@@ -413,5 +413,38 @@
         }
       }
     }
+  },
+  "components":{
+    "schemas":{
+      "User":{
+        "type":"object",
+        "properties":{
+          "id":{
+            "type":"string",
+            "example": "fd5f4d5f4sd55dfsd5d"
+          },
+          "name":{
+            "type":"string",
+            "example": "Esaú Backend"
+          },
+          "cpf":{
+            "type":"string",
+            "example": "79047214064"
+          },
+          "birth_day":{
+            "type":"date",
+            "example": "2000-05-24"
+          },
+          "email":{
+            "type":"string",
+            "example": "esaubackend@gmail.com"
+          },
+          "password":{
+            "type":"string",
+            "example": "1234578"
+          }
+        }
+      }
+    }
   }
 }
