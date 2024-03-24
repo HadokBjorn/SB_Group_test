@@ -24,8 +24,7 @@ class AuthenticateUserService{
 
   async execute({email, password}:IRequest):Promise<IResponse>{
     const user = await this.userRepository.findByEmail(email);
-    //ADD IN ENV
-    const SECRET_KEY = '8C3F99051AB999079C42802F53B7433B';
+    const SECRET_KEY = process.env.SECRET_KEY;
     if(!user) throw new AppError('E-mail or password incorrect', 209);
     const passwordMatch = await compare(password, user.password);
     if(!passwordMatch) throw new AppError('E-mail or password incorrect', 209);

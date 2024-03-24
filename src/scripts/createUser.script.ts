@@ -3,6 +3,7 @@ import { UserRepository } from "../modules/user/repositories/implementations/Use
 import { ICreateUserDto } from "../modules/user/dtos/ICreateUserDto";
 import { hashSync } from "bcrypt";
 import { AppDataSource } from '../config/typeorm';
+import { loadEnv } from '../config/env.config';
 
 const initializeDataSources = async () => {
   await AppDataSource.initialize();

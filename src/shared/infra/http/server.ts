@@ -4,7 +4,7 @@ import { AppDataSource } from '../../../config/typeorm';
 import app from './app';
 
 
-const PORT = 5000
+const PORT = +process.env.PORT || 5000;
 
 const initializeDataSources = async () => {
   await AppDataSource.initialize();

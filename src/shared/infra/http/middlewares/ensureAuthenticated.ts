@@ -9,8 +9,7 @@ async function ensureAuthenticated(request: Request, response: Response, next: N
   const authHeader = request.headers.authorization;
   if(!authHeader) throw new AppError('Token missing', 401);
   const [,token] = authHeader.split(' ');
-  //ADD A ENV
-  const SECRET_KEY = '8C3F99051AB999079C42802F53B7433B';
+  const SECRET_KEY = process.env.SECRET_KEY;
 
   try {
     const {sub: user_id} = verify(token, SECRET_KEY) as IPayload;

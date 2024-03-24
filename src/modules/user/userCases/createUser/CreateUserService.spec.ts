@@ -4,8 +4,9 @@ import { CreateUserService } from "./CreateUserService";
 import { UserRepositoryMock } from "modules/provider/fakes/UserRepositoryMock";
 import { ICreateUserDto } from "modules/user/dtos/ICreateUserDto";
 import { AppError } from '../../../../shared/infra/http/errors/AppError';
+import { loadEnv } from '../../../../config/env.config';
 
-
+loadEnv()
 let createUserService: CreateUserService;
 let userRepositoryMock: UserRepositoryMock;
 

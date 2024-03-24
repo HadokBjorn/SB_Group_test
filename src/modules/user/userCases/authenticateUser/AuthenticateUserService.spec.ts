@@ -5,7 +5,9 @@ import { AppError } from '../../../../shared/infra/http/errors/AppError';
 import { AuthenticateUserService } from './AuthenticateUserService';
 import { ICreateUserDto } from 'modules/user/dtos/ICreateUserDto';
 import { hashSync } from 'bcrypt';
+import { loadEnv } from '../../../../config/env.config';
 
+loadEnv()
 
 let authenticateUserService: AuthenticateUserService;
 let userRepositoryMock: UserRepositoryMock;
@@ -26,7 +28,7 @@ describe('AuthenticateUserService Tests',()=>{
     cpf: "24828502076",
     birth_day: new Date('2000-08-21'),
     email: "joaotest1@gmail.com",
-    password: hashSync("12345678",8)
+    password: hashSync("12345678",+process.env.SALT)
   };
 
   it('Should authenticate user successfully',async()=>{

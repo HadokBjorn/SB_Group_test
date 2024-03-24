@@ -7,7 +7,9 @@ import router from './routes';
 import { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import { AppError } from './errors/AppError';
+import { loadEnv } from '../../../config/env.config';
 
+loadEnv();
 const app = express();
 app.use(cors());
 app.use(express.json());
