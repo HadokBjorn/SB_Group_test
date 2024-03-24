@@ -6,8 +6,10 @@
   "scripts": {
     "prebuild": "rm -rf dist",
     "build": "tsup src",
+    "start": "npm run build && npm run seed && node dist/shared/infra/http/server.js",
     "dev": "cross-env NODE_ENV=dev tsx watch src/shared/infra/http/server.ts",
-    "seed": "cross-env NODE_ENV=dev ts-node src/scripts/createUser.script.ts",
+    "seed:dev": "cross-env NODE_ENV=dev ts-node src/scripts/createUser.script.ts",
+    "seed": "ts-node src/scripts/createUser.script.ts",
     "lint": "eslint . --ext .ts",
     "lint-fix": "eslint . --ext .ts --fix",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli",
