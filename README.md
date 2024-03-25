@@ -64,7 +64,16 @@
         password: "12345678"
       }
   ```
-  você receberá um token para conseguir ter acesso as demais rotas da aplicação.
+você receberá um token para conseguir ter acesso as demais rotas da aplicação.
+
+Observação: Se estiver usando Postman para testar as rotas, não esqueça de adicionar o token de autenticação na opção `Authorization > Bearer Token`
 
 ## Documentação:
+
+Para acessar a domuntação swagger da aplicação acesse a rota `localhost:5000/api-docs` após dar um start na api.
+
 ## Execução de testes:
+
+Para executar os testes é necessário que você já tenha criado o arquivo `.env.dev` com as variáveis `SALT` e `SECRET_KEY` pois os testes fazem uso de ambas as variáveis.
+
+Dê o comando `npm run test` ou `yarn run test` para que os testes sejam executados e o jest forneça um relatório.
