@@ -40,8 +40,8 @@
 ## Banco de Dados:
 
   - Instale o MongoDB ou crie um container docker com uma imagem MongoDB.
-  - Crie um Banco de Dados com o nome que desejar e em seguida o adicione no arquivo ``.env.example`` seguindo o modelo presente no arquivo.
-  - Depois altere o nome do arquivo para ``.env.dev``.
+
+  - Crie um Banco de Dados com o nome que desejar para que possa usar na aplicação.
 
 ## Instalação Local:
 
@@ -52,7 +52,11 @@
   ```
 2. Em seguida dê o comando `` npm install `` ou `` yarn install `` no prompt de comando aberto na pasta raiz do projeto.
 
-3. Após ter iniciado o seu Banco de dados execute o comando ``npm run seed`` ou ``yarn run seed`` para gerar os usuários em seu Banco de Dados.
+3. Adicione no arquivo ``.env.example`` seguindo o modelo presente no arquivo os dados do seu banco de dados.
+
+4. Depois altere o nome do arquivo para ``.env.dev``.
+
+5. Após ter iniciado o seu Banco de dados execute o comando ``npm run seed`` ou ``yarn run seed`` para gerar os usuários em seu Banco de Dados.
 
 4. Após executar o script `seed`, basta usar o comando `npm run dev` ou `yarn run dev` para a aplicação ficar online na porta `5000` no localhost.
 
