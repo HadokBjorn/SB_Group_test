@@ -1,7 +1,6 @@
 import { inject, injectable } from "tsyringe";
 import { IUserRepository } from "../../repositories/IUserRepository";
 import { AppError } from "../../../../shared/infra/http/errors/AppError";
-import { User } from "../../entities/User.entity";
 import { ResponseUserDto } from "modules/user/dtos/ResponseUserDto";
 
 @injectable()

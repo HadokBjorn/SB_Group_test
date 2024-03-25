@@ -2,7 +2,6 @@ import { Response, Request } from "express";
 import { ICreateUserDto } from "../../dtos/ICreateUserDto";
 import { container } from "tsyringe";
 import { UpdateUserService } from "./UpdateUserService";
-import { ResponseUserDto } from "../../dtos/ResponseUserDto";
 class UpdateUserController{
   async handle(request: Request, response: Response): Promise<Response>{
     const {id} = request.params;
