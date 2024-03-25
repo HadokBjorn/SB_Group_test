@@ -56,7 +56,7 @@
 
 4. Depois altere o nome do arquivo para ``.env.dev``.
 
-5. Após ter iniciado o seu Banco de dados execute o comando ``npm run seed`` ou ``yarn run seed`` para gerar os usuários em seu Banco de Dados.
+5. Após ter iniciado o seu Banco de dados execute o comando ``npm run seed:dev`` ou ``yarn run seed:dev`` para gerar os usuários em seu Banco de Dados.
 
 4. Após executar o script `seed`, basta usar o comando `npm run dev` ou `yarn run dev` para a aplicação ficar online na porta `5000` no localhost.
 
