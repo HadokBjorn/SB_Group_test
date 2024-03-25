@@ -34,7 +34,7 @@ class UserRepository implements IUserRepository {
     return user;
   }
 
-  async findAll(filter: IFilterSearchDTO): Promise<User[] | null | undefined> {
+  async findAll(filter?: IFilterSearchDTO): Promise<User[] | null | undefined> {
     const { name, cpf, email } = filter;
     const matchConditions = [];
 
