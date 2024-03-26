@@ -48,7 +48,7 @@ userRoutes
     '/',
     celebrate({
       [Segments.QUERY]:{
-        name: Joi.string().min(3).regex(/^[a-zA-Z0-9]*$/).trim(),
+        name: Joi.string().min(3).regex(/^[a-zA-Z0-9_]*$/).trim(),
         cpf: Joi.string().min(11).max(11).trim(),
         email: Joi.string().email().trim()
       }

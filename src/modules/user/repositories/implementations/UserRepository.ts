@@ -39,7 +39,8 @@ class UserRepository implements IUserRepository {
     const matchConditions = [];
 
     if (name) {
-      matchConditions.push({ name: { $regex: `.*${name}.*`, $options: 'i', } });
+      const newName = name.replace(/_/g, ' ')
+      matchConditions.push({ name: { $regex: `.*${newName}.*`, $options: 'i', } });
     }
 
     if (cpf) {
