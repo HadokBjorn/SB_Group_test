@@ -8,5 +8,6 @@ interface IUserRepository{
   findByEmail(email: string): Promise<User|null|undefined>
   findAll(filter?: IFilterSearchDTO):Promise<User[]|null|undefined>
   delete(user: User): Promise<void>
+  update(data: User):Promise<User>
 }
 export {IUserRepository};

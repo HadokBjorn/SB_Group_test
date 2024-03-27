@@ -5,6 +5,9 @@ import { IUserRepository } from "modules/user/repositories/IUserRepository";
 import { ObjectId } from "mongodb";
 
 class UserRepositoryMock implements IUserRepository{
+  async update(data: User): Promise<User> {
+    return data;
+  }
   private users: User[] = [];
 
   async save(data: ICreateUserDto): Promise<User> {

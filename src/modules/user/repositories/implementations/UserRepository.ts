@@ -11,6 +11,13 @@ class UserRepository implements IUserRepository {
   constructor(){
     this.repository = AppDataSource.getMongoRepository(User);
   }
+  async update( data: User): Promise<User> {
+    await this.repository.updateOne(
+      {_id: data._id},
+      {$set: data}
+    )
+    return data;
+  }
 
   async save(data: ICreateUserDto): Promise<User> {
     const{name,cpf,email,birth_day,password} = data;

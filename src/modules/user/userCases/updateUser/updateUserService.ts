@@ -23,7 +23,7 @@ class UpdateUserService{
 
       const toUpdateUser = Object.assign(userExist, data);
 
-      const updatedUser = await this.userRepository.save(toUpdateUser)
+      const updatedUser = await this.userRepository.update(toUpdateUser)
 
       return new ResponseUserDto(updatedUser);
     }
