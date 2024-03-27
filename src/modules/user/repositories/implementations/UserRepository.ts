@@ -64,7 +64,6 @@ class UserRepository implements IUserRepository {
       collection.push(document);
     });
 
-    console.log(users);
     return collection;
 
 }
