@@ -5,11 +5,14 @@ import { IUserRepository } from "modules/user/repositories/IUserRepository";
 import { ObjectId } from "mongodb";
 
 class UserRepositoryMock implements IUserRepository{
-  async update(data: User): Promise<User> {
-    return data;
-  }
   private users: User[] = [];
 
+  async update(data: User): Promise<User> {
+    const user = this.users.find(u=>u._id === data._id)
+    Object.assign(user,data)
+    this.users.push(user)
+    return user;
+  }
   async save(data: ICreateUserDto): Promise<User> {
     const newUser = {
       _id: new ObjectId(),
