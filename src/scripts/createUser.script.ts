@@ -109,7 +109,7 @@ async function createAdminAndUsers() {
   console.log('Admin user created:', createUserAdmin);
   console.log('------------------------------------------');
 
-  for(let i = 1; i <= users.length; i++){
+  for(let i = 1; i <= users.length - 1; i++){
     console.log('------------------------------------------');
     console.log('creating users...');
     console.log('------------------------------------------');
